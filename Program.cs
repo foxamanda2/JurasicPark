@@ -89,7 +89,7 @@ namespace JurasicPark
                         foreach (var dino in intakeorder)
                         {
 
-                            Console.WriteLine($"The dinosaurs name is {dino.Name} their diet is {dino.DietType}.\n They were acquired on {dino.WhenAcquired}.\n Their weight is {dino.Weight} lbs.\n They are in enclosure{dino.EnclosureNumber}");
+                            Console.WriteLine($" The dinosaurs name is {dino.Name} their diet is {dino.DietType}.\n They were acquired on {dino.WhenAcquired}.\n Their weight is {dino.Weight} lbs.\n They are in enclosure {dino.EnclosureNumber}");
 
                         }
                     }
@@ -168,26 +168,29 @@ namespace JurasicPark
                     var herbCount = herbivores.Count();
 
                     Console.WriteLine($"There are {carnCount} carnivores in the zoo and {herbCount} herbivores in the zoo.");
+                    Console.WriteLine("\n");
 
-                    Console.Write("Would you like to see a list of the Carnivores or Herbivores?Yes or No?");
+                    Console.Write("Would you like to see a list of the Carnivores or Herbivores? Yes or No?");
+                    Console.WriteLine("\n");
                     var YesOrNo = Console.ReadLine().ToLower();
 
                     if (YesOrNo == "yes" || YesOrNo == "y")
                     {
                         Console.Write("Do you want to see Carnivores or Herbivores? H or C?");
+                        Console.WriteLine("\n");
                         var HOrC = Console.ReadLine().ToLower();
                         if (HOrC == "h")
                         {
                             foreach (var herb in herbivores)
                             {
-                                Console.WriteLine($"The dinosaurs name is {herb.Name} their diet is {herb.DietType}.\n They were acquired on {herb.WhenAcquired}.\n Their weight is {herb.Weight} lbs.\n They are in enclosure{herb.EnclosureNumber}");
+                                Console.WriteLine($" The dinosaurs name is {herb.Name} their diet is {herb.DietType}.\n They were acquired on {herb.WhenAcquired}.\n Their weight is {herb.Weight} lbs.\n They are in enclosure {herb.EnclosureNumber}");
                             }
                         }
                         if (HOrC == "c")
                         {
                             foreach (var carn in carnivores)
                             {
-                                Console.WriteLine($"The dinosaurs name is {carn.Name} their diet is {carn.DietType}.\n They were acquired on {carn.WhenAcquired}.\n Their weight is {carn.Weight} lbs.\n They are in enclosure{carn.EnclosureNumber}");
+                                Console.WriteLine($" The dinosaurs name is {carn.Name} their diet is {carn.DietType}.\n They were acquired on {carn.WhenAcquired}.\n Their weight is {carn.Weight} lbs.\n They are in enclosure {carn.EnclosureNumber}");
                             }
                         }
 
