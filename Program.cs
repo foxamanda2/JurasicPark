@@ -98,12 +98,6 @@ namespace JurasicPark
                         Console.WriteLine("Sorry you have no Dinosaurs in your zoo");
                     }
 
-                    // var intakeDate = dinosaurs.OrderBy(intake => intake.WhenAcquired);
-
-
-                    //   --Ask for list in order from when acquired
-                    //   --print out entire list of details
-
                 }
 
                 if (userchoice == "add")
@@ -196,8 +190,6 @@ namespace JurasicPark
 
                     }
 
-
-
                 }
 
 
@@ -208,41 +200,6 @@ namespace JurasicPark
 
             }
 
-
-
-
-            //      var quitzoo = false;
-            //             --Should all be in a boolean while loop Quit == false 2.Give menu options
-
-            // -View(be able to view Dinosaurs in an order of when Acquired)
-            //   --Ask for list in order from when acquired
-            //   --print out entire list of details
-
-            // - Add a Dinosour
-            // --Ask all of the properties of the dino
-            // --Add those properties to a new instance
-            // --Add to dino list
-
-            // - Remove
-            // --Ask which dino to find
-            // --find the dino
-            // --remove the dino from list
-
-            // -Transfer
-            // --Ask which dino to transfer
-            // --Find the dino
-            // --Ask which enclosure to switch to
-            // --Update the old enclosure
-
-            // -Summary
-            // --Add the diet type into a new list
-            // --Count the number of Carnivores and Herbivores
-            // --print out data
-
-            // - Quit
-            // --Boolean if Quit == true then exit loop
-
-            // 3.Exit zoo Statement
             Greetings("You have left the Zoo Database");
         }
     }
