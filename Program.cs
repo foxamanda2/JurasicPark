@@ -44,26 +44,26 @@ namespace JurasicPark
             {
               new Dinosaurs()
               {
-            Name = "Bobby",
-            DietType = "Herbivore",
-            WhenAcquired = DateTime.Now,
-            Weight = 500,
-            EnclosureNumber = 1,
+               Name = "Bobby",
+               DietType = "Herbivore",
+               WhenAcquired = DateTime.Today,
+               Weight = 500,
+               EnclosureNumber = 1,
               },
 
             new Dinosaurs()
             {
                 Name = "Sarah",
                 DietType = "Carnivore",
-                WhenAcquired = DateTime.Now,
+                WhenAcquired = DateTime.Today,
                 Weight = 400,
                 EnclosureNumber = 2,
             },
             new Dinosaurs()
             {
-               Name = "Violet",
+                Name = "Violet",
                 DietType = "Carnivore",
-                WhenAcquired = DateTime.Now,
+                WhenAcquired = DateTime.Today,
                 Weight = 250,
                 EnclosureNumber = 3,
             }
@@ -120,8 +120,14 @@ namespace JurasicPark
                         var YOrN = promptforstring("Would you like to see a Dinosaur acquired after a certain date? Y or N? ").ToLower();
                         if (YOrN == "y" || YOrN == "yes")
                         {
-                            var date = int.Parse(promptforstring("What date are you looking for? "));
-                            // var dinoDate = dinosaurs.Where(dinoDate => dinoDate.WhenAcquired == date);
+                            var date = DateTime.Parse(promptforstring("What date are you looking for? "));
+                            var datefound = dinosaurs.Where(dinodate => dinodate.WhenAcquired >= date);
+                            foreach (var dino in datefound)
+                            {
+                                Console.WriteLine($"{dino.Name} was acquired on {date}");
+                            }
+
+
                         }
                     }
 
@@ -161,7 +167,7 @@ namespace JurasicPark
                     var newDino = new Dinosaurs();
                     newDino.Name = newName;
                     newDino.DietType = newDietType;
-                    newDino.WhenAcquired = DateTime.Now;
+                    newDino.WhenAcquired = DateTime.Today;
                     newDino.Weight = newWeight;
                     newDino.EnclosureNumber = newEnclosure;
 
