@@ -87,13 +87,14 @@ namespace JurasicPark
                 var userchoice = Console.ReadLine().ToLower().Trim();
                 if (userchoice == "view")
                 {
-                    Console.WriteLine("View Menu");
-                    Console.WriteLine("Dinosaurs in Zoo");
-                    Console.WriteLine("Dinosaurs by Intake Date");
-                    Console.WriteLine("Dinosaurs by enclosure");
-                    var back = false;
+                    Console.WriteLine("Would you like to view Dinosaurs in/by:");
+                    Console.WriteLine("Zoo");
+                    Console.WriteLine("Intake Date");
+                    Console.WriteLine("Enclosure");
+
+
                     var viewchoice = Console.ReadLine().ToLower().Trim();
-                    if (viewchoice == "dinosaurs in zoo")
+                    if (viewchoice == "zoo")
                     {
                         var intakeorder = dinosaurs.OrderBy(dino => dino.WhenAcquired);
                         if (dinosaurs.Count != 0)
@@ -113,7 +114,7 @@ namespace JurasicPark
                         }
                     }
 
-                    if (viewchoice == "dinosaurs by intake date")
+                    if (viewchoice == "intake date")
                     {
                         Console.Write("Would you like to see a Dinosaur acquired after a certain date? Y or N? ");
                         var YOrN = Console.ReadLine().ToLower();
@@ -125,9 +126,23 @@ namespace JurasicPark
                         }
                     }
 
-                    if (viewchoice == "dinosaurs by enclosure")
+                    if (viewchoice == "enclosure")
                     {
-                        Console.WriteLine("Cool");
+                        Console.WriteLine("What enclosure would you like? ");
+                        var enclosurenumber = int.Parse(Console.ReadLine());
+                        var enclosure = dinosaurs.Where(enclosure => enclosure.EnclosureNumber == enclosurenumber);
+                        if (enclosure.Count() != 0)
+                        {
+                            Console.WriteLine($"The Dinosaur located in {enclosurenumber} is:");
+                            foreach (var dino in enclosure)
+                            {
+                                Console.WriteLine($" The dinosaurs name is {dino.Name} their diet is {dino.DietType}.\n They were acquired on {dino.WhenAcquired}.\n Their weight is {dino.Weight} lbs.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("There are no Dinosaurs in this enclosure");
+                        }
                     }
 
 
