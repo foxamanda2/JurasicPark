@@ -44,35 +44,41 @@ namespace JurasicPark
 
             // var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
 
+            var fileReader = new StreamReader("dinosaurs.csv");
 
-            var dinosaurs = new List<Dinosaurs>()
-            {
-              new Dinosaurs()
-              {
-               Name = "Bobby",
-               DietType = "Herbivore",
-               WhenAcquired = DateTime.Today,
-               Weight = 500,
-               EnclosureNumber = 1,
-              },
+            var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
+            var dinosaurs = csvReader.GetRecords<Dinosaurs>().ToList();
 
-            new Dinosaurs()
-            {
-                Name = "Sarah",
-                DietType = "Carnivore",
-                WhenAcquired = DateTime.Today,
-                Weight = 400,
-                EnclosureNumber = 2,
-            },
-            new Dinosaurs()
-            {
-                Name = "Violet",
-                DietType = "Carnivore",
-                WhenAcquired = DateTime.Today,
-                Weight = 250,
-                EnclosureNumber = 3,
-            }
-            };
+            fileReader.Close();
+
+            // var dinosaurs = new List<Dinosaurs>()
+            // {
+            //   new Dinosaurs()
+            //   {
+            //    Name = "Bobby",
+            //    DietType = "Herbivore",
+            //    WhenAcquired = DateTime.Today,
+            //    Weight = 500,
+            //    EnclosureNumber = 1,
+            //   },
+
+            // new Dinosaurs()
+            // {
+            //     Name = "Sarah",
+            //     DietType = "Carnivore",
+            //     WhenAcquired = DateTime.Today,
+            //     Weight = 400,
+            //     EnclosureNumber = 2,
+            // },
+            // new Dinosaurs()
+            // {
+            //     Name = "Violet",
+            //     DietType = "Carnivore",
+            //     WhenAcquired = DateTime.Today,
+            //     Weight = 250,
+            //     EnclosureNumber = 3,
+            // }
+            // };
 
             Greetings("Welcome to the dino zoo");
 
@@ -184,7 +190,7 @@ namespace JurasicPark
                     var dinoName = promptforstring("What Dinosaur do you want to remove? ").ToLower();
 
 
-                    var FindDino = dinosaurs.Find(dino => dino.Name == dinoName);
+                    var FindDino = dinosaurs.Find(dino => dino.Name.ToLower() == dinoName);
 
                     dinosaurs.Remove(FindDino);
 
