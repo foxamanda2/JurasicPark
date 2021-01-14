@@ -14,6 +14,9 @@ namespace JurasicPark
         public int EnclosureNumber { get; set; }
 
     }
+
+
+
     class Program
     {
 
@@ -25,12 +28,16 @@ namespace JurasicPark
             Console.WriteLine();
             Console.WriteLine();
         }
+
+        // static void prompt(string prompt)
+        // {
+        //     Console.Write(prompt)
+        //   var input = Console.ReadLine();
+        // }
+
         static void Main(string[] args)
         {
             //  1.Create a welcome to the zoo
-
-
-
 
             var dinosaurs = new List<Dinosaurs>()
             {
@@ -38,7 +45,7 @@ namespace JurasicPark
               {
             Name = "Bobby",
             DietType = "Herbivore",
-            WhenAcquired = DateTime.Now,
+            WhenAcquired = DateTime.Today,
             Weight = 500,
             EnclosureNumber = 1,
               },
@@ -47,7 +54,7 @@ namespace JurasicPark
             {
                 Name = "Sarah",
                 DietType = "Carnivore",
-                WhenAcquired = DateTime.Now,
+                WhenAcquired = DateTime.Today,
                 Weight = 400,
                 EnclosureNumber = 2,
             },
@@ -55,7 +62,7 @@ namespace JurasicPark
             {
                Name = "Violet",
                 DietType = "Carnivore",
-                WhenAcquired = DateTime.Now,
+                WhenAcquired = DateTime.Today,
                 Weight = 250,
                 EnclosureNumber = 3,
             }
@@ -78,27 +85,55 @@ namespace JurasicPark
                 Console.WriteLine("Quit");
 
                 var userchoice = Console.ReadLine().ToLower().Trim();
-
                 if (userchoice == "view")
                 {
-                    var intakeorder = dinosaurs.OrderBy(dino => dino.WhenAcquired);
-                    if (dinosaurs.Count != 0)
+                    Console.WriteLine("View Menu");
+                    Console.WriteLine("Dinosaurs in Zoo");
+                    Console.WriteLine("Dinosaurs by Intake Date");
+                    Console.WriteLine("Dinosaurs by enclosure");
+                    var back = false;
+                    var viewchoice = Console.ReadLine().ToLower().Trim();
+                    if (viewchoice == "dinosaurs in zoo")
                     {
-
-
-                        foreach (var dino in intakeorder)
+                        var intakeorder = dinosaurs.OrderBy(dino => dino.WhenAcquired);
+                        if (dinosaurs.Count != 0)
                         {
 
-                            Console.WriteLine($" The dinosaurs name is {dino.Name} their diet is {dino.DietType}.\n They were acquired on {dino.WhenAcquired}.\n Their weight is {dino.Weight} lbs.\n They are in enclosure {dino.EnclosureNumber}");
 
+                            foreach (var dino in intakeorder)
+                            {
+
+                                Console.WriteLine($" The dinosaurs name is {dino.Name} their diet is {dino.DietType}.\n They were acquired on {dino.WhenAcquired}.\n Their weight is {dino.Weight} lbs.\n They are in enclosure {dino.EnclosureNumber}");
+
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry you have no Dinosaurs in your zoo");
                         }
                     }
-                    else
+
+                    if (viewchoice == "dinosaurs by intake date")
                     {
-                        Console.WriteLine("Sorry you have no Dinosaurs in your zoo");
+                        Console.Write("Would you like to see a Dinosaur acquired after a certain date? Y or N? ");
+                        var YOrN = Console.ReadLine().ToLower();
+                        if (YOrN == "y" || YOrN == "yes")
+                        {
+                            Console.WriteLine("What date are you looking for? ");
+                            var date = int.Parse(Console.ReadLine());
+                            // var dinoDate = dinosaurs.Where(dinoDate => dinoDate.WhenAcquired == date);
+                        }
                     }
 
+                    if (viewchoice == "dinosaurs by enclosure")
+                    {
+                        Console.WriteLine("Cool");
+                    }
+
+
                 }
+
+
 
                 if (userchoice == "add")
                 {
@@ -204,3 +239,4 @@ namespace JurasicPark
         }
     }
 }
+
