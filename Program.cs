@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using CsvHelper;
 
 namespace JurasicPark
 {
@@ -38,7 +41,9 @@ namespace JurasicPark
 
         static void Main(string[] args)
         {
-            //  1.Create a welcome to the zoo
+
+            // var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
+
 
             var dinosaurs = new List<Dinosaurs>()
             {
@@ -245,6 +250,14 @@ namespace JurasicPark
                 }
 
             }
+
+            var fileWriter = new StreamWriter("dinosaurs.csv");
+
+            var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+            csvWriter.WriteRecords(dinosaurs);
+
+            fileWriter.Close();
 
             Greetings("You have left the Dino Zoo");
         }
