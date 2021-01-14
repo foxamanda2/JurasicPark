@@ -88,7 +88,7 @@ namespace JurasicPark
                 var userchoice = Console.ReadLine().ToLower().Trim();
                 if (userchoice == "view")
                 {
-                    Console.WriteLine("Would you like to view Dinosaurs in/by:");
+                    Console.WriteLine("Would you like to view Dinosaurs in/by: ");
                     Console.WriteLine("Zoo");
                     Console.WriteLine("Intake Date");
                     Console.WriteLine("Enclosure");
@@ -137,7 +137,7 @@ namespace JurasicPark
                         var enclosure = dinosaurs.Where(enclosure => enclosure.EnclosureNumber == enclosurenumber);
                         if (enclosure.Count() != 0)
                         {
-                            Console.WriteLine($"The Dinosaur located in {enclosurenumber} is:");
+                            Console.WriteLine($"The Dinosaur located in {enclosurenumber} is: ");
                             foreach (var dino in enclosure)
                             {
                                 Console.WriteLine($" The dinosaurs name is {dino.Name} their diet is {dino.DietType}.\n They were acquired on {dino.WhenAcquired}.\n Their weight is {dino.Weight} lbs.");
@@ -158,9 +158,9 @@ namespace JurasicPark
                 {
                     var newName = promptforstring("What is your Dinosaurs name? ");
 
-                    var newDietType = promptforstring("What is your Dinosaurs weight? ");
+                    var newDietType = promptforstring("What is your Dinosaurs diet type? ");
 
-                    var newWeight = int.Parse(promptforstring("What is your Dinosaurs Weight?"));
+                    var newWeight = int.Parse(promptforstring("What is your Dinosaurs weight? "));
 
                     var newEnclosure = int.Parse(promptforstring("What is your Dinosaurs enclosure number? "));
 
@@ -176,7 +176,7 @@ namespace JurasicPark
 
                 if (userchoice == "remove")
                 {
-                    var dinoName = promptforstring("What Dinosaur do you want to remove?");
+                    var dinoName = promptforstring("What Dinosaur do you want to remove? ").ToLower();
 
 
                     var FindDino = dinosaurs.Find(dino => dino.Name == dinoName);
@@ -188,13 +188,14 @@ namespace JurasicPark
 
                 if (userchoice == "transfer")
                 {
-                    var dinoName = promptforstring("What Dinosaur are you trying to transfer");
 
-                    var FindDino = dinosaurs.Find(dino => dino.Name == dinoName);
+                    var dinoName = promptforstring("What Dinosaur are you trying to transfer: ").ToLower();
 
-                    var TransferEnclosure = int.Parse(promptforstring("What enclosure do you want them to switch to?"));
+                    var FindDino = dinosaurs.Find(dino => dino.Name.ToLower() == dinoName);
 
-                    FindDino.EnclosureNumber = TransferEnclosure;
+                    var TransferEnclosure = promptforstring("What enclosure do you want them to switch to?");
+
+                    FindDino.EnclosureNumber = int.Parse(TransferEnclosure);
 
 
                 }
@@ -210,14 +211,14 @@ namespace JurasicPark
                     Console.WriteLine($"There are {carnCount} carnivores in the zoo and {herbCount} herbivores in the zoo.");
                     Console.WriteLine("\n");
 
-                    Console.Write("Would you like to see a list of the Carnivores or Herbivores? Yes or No?");
+                    Console.Write("Would you like to see a list of the Carnivores or Herbivores? Yes or No? ");
                     Console.WriteLine("\n");
                     var YesOrNo = Console.ReadLine().ToLower();
 
                     if (YesOrNo == "yes" || YesOrNo == "y")
                     {
                         Console.WriteLine("\n");
-                        var HOrC = promptforstring("Do you want to see Carnivores or Herbivores? H or C?").ToLower();
+                        var HOrC = promptforstring("Do you want to see Carnivores or Herbivores? H or C? ").ToLower();
                         if (HOrC == "h")
                         {
                             foreach (var herb in herbivores)
