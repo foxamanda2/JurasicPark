@@ -29,11 +29,12 @@ namespace JurasicPark
             Console.WriteLine();
         }
 
-        // static void prompt(string prompt)
-        // {
-        //     Console.Write(prompt)
-        //   var input = Console.ReadLine();
-        // }
+        static string promptforstring(string prompt)
+        {
+            Console.Write(prompt);
+            var input = Console.ReadLine();
+            return input;
+        }
 
         static void Main(string[] args)
         {
@@ -45,7 +46,7 @@ namespace JurasicPark
               {
             Name = "Bobby",
             DietType = "Herbivore",
-            WhenAcquired = DateTime.Today,
+            WhenAcquired = DateTime.Now,
             Weight = 500,
             EnclosureNumber = 1,
               },
@@ -54,7 +55,7 @@ namespace JurasicPark
             {
                 Name = "Sarah",
                 DietType = "Carnivore",
-                WhenAcquired = DateTime.Today,
+                WhenAcquired = DateTime.Now,
                 Weight = 400,
                 EnclosureNumber = 2,
             },
@@ -62,7 +63,7 @@ namespace JurasicPark
             {
                Name = "Violet",
                 DietType = "Carnivore",
-                WhenAcquired = DateTime.Today,
+                WhenAcquired = DateTime.Now,
                 Weight = 250,
                 EnclosureNumber = 3,
             }
@@ -116,20 +117,17 @@ namespace JurasicPark
 
                     if (viewchoice == "intake date")
                     {
-                        Console.Write("Would you like to see a Dinosaur acquired after a certain date? Y or N? ");
-                        var YOrN = Console.ReadLine().ToLower();
+                        var YOrN = promptforstring("Would you like to see a Dinosaur acquired after a certain date? Y or N? ").ToLower();
                         if (YOrN == "y" || YOrN == "yes")
                         {
-                            Console.WriteLine("What date are you looking for? ");
-                            var date = int.Parse(Console.ReadLine());
+                            var date = int.Parse(promptforstring("What date are you looking for? "));
                             // var dinoDate = dinosaurs.Where(dinoDate => dinoDate.WhenAcquired == date);
                         }
                     }
 
                     if (viewchoice == "enclosure")
                     {
-                        Console.WriteLine("What enclosure would you like? ");
-                        var enclosurenumber = int.Parse(Console.ReadLine());
+                        var enclosurenumber = int.Parse(promptforstring("What enclosure would you like? "));
                         var enclosure = dinosaurs.Where(enclosure => enclosure.EnclosureNumber == enclosurenumber);
                         if (enclosure.Count() != 0)
                         {
@@ -152,17 +150,13 @@ namespace JurasicPark
 
                 if (userchoice == "add")
                 {
-                    Console.Write("What is your Dinosaurs name? ");
-                    var newName = Console.ReadLine();
+                    var newName = promptforstring("What is your Dinosaurs name? ");
 
-                    Console.Write("What is your Dinosaurs diet type? ");
-                    var newDietType = Console.ReadLine();
+                    var newDietType = promptforstring("What is your Dinosaurs weight? ");
 
-                    Console.Write("What is your Dinosaurs weight? ");
-                    var newWeight = int.Parse(Console.ReadLine());
+                    var newWeight = int.Parse(promptforstring("What is your Dinosaurs Weight?"));
 
-                    Console.Write("What is your Dinosaurs enclosure number? ");
-                    var newEnclosure = int.Parse(Console.ReadLine());
+                    var newEnclosure = int.Parse(promptforstring("What is your Dinosaurs enclosure number? "));
 
                     var newDino = new Dinosaurs();
                     newDino.Name = newName;
@@ -176,8 +170,7 @@ namespace JurasicPark
 
                 if (userchoice == "remove")
                 {
-                    Console.WriteLine("What Dinosaur do you want to remove?");
-                    var dinoName = Console.ReadLine();
+                    var dinoName = promptforstring("What Dinosaur do you want to remove?");
 
 
                     var FindDino = dinosaurs.Find(dino => dino.Name == dinoName);
@@ -189,14 +182,11 @@ namespace JurasicPark
 
                 if (userchoice == "transfer")
                 {
-                    Console.WriteLine("What Dinosaur are you trying to transfer");
-                    var dinoName = Console.ReadLine();
-
+                    var dinoName = promptforstring("What Dinosaur are you trying to transfer");
 
                     var FindDino = dinosaurs.Find(dino => dino.Name == dinoName);
 
-                    Console.WriteLine("What enclosure do you want them to switch to?");
-                    var TransferEnclosure = int.Parse(Console.ReadLine());
+                    var TransferEnclosure = int.Parse(promptforstring("What enclosure do you want them to switch to?"));
 
                     FindDino.EnclosureNumber = TransferEnclosure;
 
@@ -220,9 +210,8 @@ namespace JurasicPark
 
                     if (YesOrNo == "yes" || YesOrNo == "y")
                     {
-                        Console.Write("Do you want to see Carnivores or Herbivores? H or C?");
                         Console.WriteLine("\n");
-                        var HOrC = Console.ReadLine().ToLower();
+                        var HOrC = promptforstring("Do you want to see Carnivores or Herbivores? H or C?").ToLower();
                         if (HOrC == "h")
                         {
                             foreach (var herb in herbivores)
