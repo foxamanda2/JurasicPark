@@ -69,7 +69,7 @@ namespace JurasicPark
             }
             };
 
-            Greetings("Welcome to the Zoo Database");
+            Greetings("Welcome to the dino zoo");
 
             var QuitZoo = false;
 
@@ -203,8 +203,8 @@ namespace JurasicPark
                 if (userchoice == "summary")
                 {
 
-                    var carnivores = dinosaurs.Where(dino => dino.DietType == "Carnivore");
-                    var herbivores = dinosaurs.Where(dino => dino.DietType == "Herbivore");
+                    var carnivores = dinosaurs.Where(dino => dino.DietType == "Carnivore" || dino.DietType == "carnivore");
+                    var herbivores = dinosaurs.Where(dino => dino.DietType == "Herbivore" || dino.DietType == "herbivore");
                     var carnCount = carnivores.Count();
                     var herbCount = herbivores.Count();
 
@@ -246,7 +246,7 @@ namespace JurasicPark
 
             }
 
-            Greetings("You have left the Zoo Database");
+            Greetings("You have left the Dino Zoo");
         }
     }
 }
